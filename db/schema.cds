@@ -8,6 +8,9 @@ entity PurchaseRequests : cuid, managed {
   department   : String(40);
   status       : String(20) default 'Draft';
   totalAmount  : Decimal(12,2);
+  submittedAt  : Timestamp;
+  decidedAt    : Timestamp;
+  approvalDelayHours : Decimal(10,1);
   items        : Composition of many Items on items.request = $self;
 }
 

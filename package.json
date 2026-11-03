@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "start": "cds-serve",
-    "watch": "cds watch"
+    "watch": "cds watch",
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "@sap/cds": "^9"
   },
   "devDependencies": {
+    "@cap-js/cds-test": "^1.0.2",
     "@cap-js/sqlite": "^2",
-    "@sap/cds-dk": "^9.9.7"
+    "@sap/cds-dk": "^9.9.7",
+    "jest": "^30.5.2"
   },
   "cds": {
     "requires": {
@@ -19,6 +22,27 @@
         "kind": "sqlite",
         "credentials": {
           "url": ":memory:"
+        }
+      },
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "alice": {
+            "password": "alice",
+            "roles": [
+              "manager"
+            ]
+          },
+          "bob": {
+            "password": "bob",
+            "roles": [
+              "director"
+            ]
+          },
+          "omran": {
+            "password": "omran",
+            "roles": []
+          }
         }
       }
     }
